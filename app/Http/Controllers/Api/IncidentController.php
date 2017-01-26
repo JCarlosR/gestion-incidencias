@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Incident;
+use App\Project;
 
 class IncidentController extends Controller
 {
