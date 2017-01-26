@@ -3,8 +3,8 @@
 Route::post('/login', 'Api\AuthController@login');
 
 // Android API
-Route::get('/projects', 'Admin\ProjectController@all');
-Route::get('/project/{id}/categories', 'Admin\CategoryController@byProject');
+Route::get('/projects', 'Api\ProjectController@all');
+Route::get('/project/{id}/categories', 'Api\CategoryController@byProject');
 
 // Web API
 Route::get('/proyecto/{id}/niveles', 'Admin\LevelController@byProject');
