@@ -34,6 +34,7 @@
         </ul>
 
     </div>
+    @if ($incident->state == 'Asignado')
     <div class="panel-footer">
         <form action="/mensajes" method="POST">
             {{ csrf_field() }}
@@ -46,4 +47,5 @@
             </div>    
         </form>        
     </div>
+    @endif
 </div>
