@@ -20,7 +20,7 @@ class HomeController extends Controller
         $user = auth()->user();
         $selected_project_id = $user->selected_project_id;
 
-        if ($user->is_support) {
+        if ($user->is_support && $selected_project_id) {
             $my_incidents = Incident::where('project_id', $selected_project_id)
                                     ->where('support_id', $user->id)->get();
 
