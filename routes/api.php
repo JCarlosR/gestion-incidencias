@@ -12,6 +12,7 @@ Route::post('/incidents', 'Api\IncidentController@store');
 // Android API - Reports
 Route::get('/incidents/state', 'Api\IncidentController@stateCount');
 Route::get('/projects/incident', 'Api\ProjectController@incidentCount');
+Route::get('/supports/incident', 'Api\SupportController@incidentCount');
 
 // Web API
 Route::get('/proyecto/{id}/niveles', 'Admin\LevelController@byProject');
