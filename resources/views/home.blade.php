@@ -117,7 +117,7 @@
 								<td>{{ $incident->created_at }}</td>
 								<td>{{ $incident->title_short }}</td>
 								<td>
-									{{ $incident->support_id ?: 'Sin asignar' }}
+									{{ $incident->support_id ? $incident->support->name : 'Sin asignar' }}
 								</td>
 							</tr>
 						@endforeach
