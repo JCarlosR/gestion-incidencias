@@ -38,4 +38,23 @@ class IncidentController extends Controller
     	return $data;
     }
 
+    public function store(Request $request)
+    {
+    	$incident = new Incident();
+
+    	$incident->title = $request->input('title');
+    	$incident->description = $request->input('description');
+    	$incident->severity = $request->input('severity');
+
+ 		$incident->category_id = $request->input('category_id');
+ 		$incident->project_id = $request->input('project_id');
+ 		
+ 		$incident->client_id = $request->input('client_id');
+        $incident->level_id = Project::find($request->input('project_id'))->first_level_id;
+
+        $success = $incident->save();
+
+        $data['error'] = !$success;
+        return $data;
+    }
 }
