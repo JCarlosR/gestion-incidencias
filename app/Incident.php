@@ -22,6 +22,8 @@ class Incident extends Model
         'description.min' => 'La descripción debe presentar al menos 15 caracteres.'
     ];
 
+    protected $appends = ['state'];
+
     // relationships
 
     public function category()
