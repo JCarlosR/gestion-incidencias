@@ -9,6 +9,7 @@ use App\Incident;
 
 class IncidentController extends Controller
 {
+
     public function stateCount()
     {
     	$incidents = Incident::all();
@@ -36,4 +37,5 @@ class IncidentController extends Controller
 		$data['assigned'] = $assigned;
     	return $data;
     }
+
 }

@@ -8,6 +8,7 @@ Route::get('/project/categories', 'Api\CategoryController@byProject');
 
 // Android API - Reports
 Route::get('/incidents/state', 'Api\IncidentController@stateCount');
+Route::get('/projects/incident', 'Api\ProjectController@incidentCount');
 
 // Web API
 Route::get('/proyecto/{id}/niveles', 'Admin\LevelController@byProject');
