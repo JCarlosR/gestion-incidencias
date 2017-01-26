@@ -9,9 +9,11 @@ use App\Project;
 
 class CategoryController extends Controller
 {
-    public function byProject($id)
+    public function byProject(Request $request)
     {
-    	$data['categories'] = Project::find($id)->categories;
+    	$project_id = $request->input('project_id');
+    	$data['categories'] = Project::find($project_id)->categories;
+    	
     	return $data;
     }
 }
