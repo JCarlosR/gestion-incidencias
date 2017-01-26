@@ -8,11 +8,11 @@
 					<a href="/home">Dashboard</a>
 				</li>
 
-				@if (! auth()->user()->is_client)
-				<li @if(request()->is('ver')) class="active" @endif>
-					<a href="/ver">Ver incidencias</a>
-				</li>
-				@endif
+				{{-- @if (! auth()->user()->is_client) --}}
+				{{-- <li @if(request()->is('ver')) class="active" @endif> --}}
+				{{-- <a href="/ver">Ver incidencias</a> --}}
+				{{-- </li> --}}
+				{{-- @endif --}}
 
 				<li @if(request()->is('reportar')) class="active" @endif>
 					<a href="/reportar">Reportar incidencia</a>
