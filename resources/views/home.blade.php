@@ -31,7 +31,7 @@
 										{{ $incident->id }}
 									</a>
 								</td>
-								<td>{{ $incident->category->name }}</td>
+								<td>{{ $incident->category_name }}</td>
 								<td>{{ $incident->severity_full }}</td>
 								<td>{{ $incident->state }}</td>
 								<td>{{ $incident->created_at }}</td>
