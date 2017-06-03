@@ -1,10 +1,10 @@
-# Acerca de este sistema desarrollado en Laravel
+# Acerca de este proyecto Laravel
 
-Este repositorio se corresponde con una serie de tutoriales sobre Laravel.
+Hay una serie de tutoriales sobre Laravel, en donde se desarrolla este proyecto paso a paso.
 
 Esta serie está grabada en español, y puedes acceder a ella sin costo alguno.
 
-[Ingresa aquí][laravel] ahora y aprender Laravel desde ya.
+Si deseas ver la serie, [ingresa aquí][laravel].
 
 Verás lo fácil y práctico que resulta usar Laravel.
 
