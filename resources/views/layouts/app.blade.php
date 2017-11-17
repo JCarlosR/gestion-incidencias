@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="http://bootswatch.com/flatly/bootstrap.css">
+    <link rel="stylesheet" href="//bootswatch.com/3/flatly/bootstrap.css">
     @yield('styles')
 
     <!-- Scripts -->
