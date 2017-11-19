@@ -23,14 +23,15 @@ class HomeController extends Controller
         if ($selected_project_id) {
 
             if ($user->is_support) {
-                $my_incidents = Incident::where('project_id', $selected_project_id)
-                                        ->where('support_id', $user->id)->get();
+                $my_incidents = Incident::where('project_id', $selected_project_id)->where('support_id', $user->id)->get();
 
-                $projectUser = ProjectUser::where('project_id', $selected_project_id)
-                                            ->where('user_id', $user->id)->first();
+                $projectUser = ProjectUser::where('project_id', $selected_project_id)->where('user_id', $user->id)->first();
 
-                $pending_incidents = Incident::where('support_id', null)
-                                            ->where('level_id', $projectUser->level_id)->get();
+                if ($projectUser) {
+                    $pending_incidents = Incident::where('support_id', null)->where('level_id', $projectUser->level_id)->get();
+                } else {
+                    $pending_incidents = collect(); // empty when no project associated
+                }
             }
 
             $incidents_by_me = Incident::where('client_id', $user->id)
