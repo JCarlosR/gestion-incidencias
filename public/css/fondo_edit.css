@@ -1,0 +1,27 @@
+.wrap {
+    background-color: black;
+    text-align:center;
+    position: relative;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    display: inline-block;
+}
+.wrap:hover .text_over_image {
+    display: block;
+}
+.wrap:hover img {
+    opacity: 0.5;
+}
+.text_over_image {
+    position: absolute;
+    display: none;
+    margin: auto;
+    top: 0;
+    left:0;
+    right:0;
+    bottom:0;
+    color:#fff;
+    line-height:210px;
+    vertical-align:middle;
+}

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
 
             $table->smallInteger('role')->default(2); // 0: Admin | 1: Support | 2: Client
+            $table->string('image')->nullable(); // profile photo
             
             $table->integer('selected_project_id')->unsigned()->nullable();
             $table->foreign('selected_project_id')->references('id')->on('projects');

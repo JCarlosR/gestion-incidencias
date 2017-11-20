@@ -4,10 +4,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/instrucciones', function () {
+    return view('instructions');
+});
+
+Route::get('/acerca-de', function () {
+    return view('credits');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/seleccionar/proyecto/{id}', 'HomeController@selectProject');
+
+Route::group(['middleware' => 'auth', 'namespace' => 'User'], function (){
+    Route::post('/profile/image', 'ProfileController@postImage');
+});
 
 // Incident
 
@@ -30,6 +42,7 @@ Route::post('/mensajes', 'MessageController@store');
 
 
 Route::group(['middleware' => 'admin', 'namespace' => 'Admin'], function () {
+
     // User
     Route::get('/usuarios', 'UserController@index');
     Route::post('/usuarios', 'UserController@store');

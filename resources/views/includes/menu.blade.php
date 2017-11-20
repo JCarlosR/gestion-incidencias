@@ -1,6 +1,26 @@
-<div class="panel panel-primary">
+	@if (auth()->check())
+		<div class="panel-footer" align="center">
+				<div class="user-box">
+					<form action="{{ url('/profile/image') }}" id="avatarForm">
+						{{ csrf_field() }}
+						<input type="file" style="display: none" id="avatarInput">
+					</form>
+					<div class="wrap">
+						<div class="user-img">
+							@if(auth()->user()->image)
+								<img src="{{ asset('images/users/'.auth()->id().'.'.auth()->user()->image ) }}" alt="user-img" id="avatarImage" title="{{ auth()->user()->name }}" class="img-circle  img-responsive">
+							@else
+								<img src="{{ asset('images/users/0.jpg') }}" alt="user-img" id="avatarImage" title="{{ auth()->user()->name }}" class="img-circle img-responsive">
+							@endif
+						</div>
+						<div class="text_over_image" id="textToEdit">Editar</div>
+					</div>
+					<h5>{{ auth()->user()->name }}</h5>
+				</div>
+		</div>
+	@endif
+	<div class="panel panel-primary">
 	<div class="panel-heading">Menú</div>
-
 	<div class="panel-body">
 		<ul class="nav nav-pills nav-stacked">
 			@if (auth()->check())
@@ -32,8 +52,8 @@
 				@endif
 			@else
 				<li @if(request()->is('/')) class="active" @endif><a href="/">Bienvenido</a></li>
-				<li><a href="/instrucciones">Instrucciones</a></li>
-				<li><a href="/acerca-de">Créditos</a></li>
+				<li @if(request()->is('instrucciones')) class="active" @endif><a href="/instrucciones">Instrucciones</a></li>
+				<li @if(request()->is('acerca-de')) class="active" @endif><a href="/acerca-de">Créditos</a></li>
 			@endif
 		</ul>
 	</div>
