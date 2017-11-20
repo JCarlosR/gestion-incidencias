@@ -37,13 +37,17 @@ class IncidentController extends Controller
         $incident->category_id = $request->input('category_id') ?: null;
         $incident->severity = $request->input('severity');
         $incident->title = $request->input('title');
-        $incident->description = $request->input('description');
+        if ($request->input('check-my-description') == 'on') {
+            $incident->description = $request->input('my-description');
+        } else {
+            $incident->description = $request->input('description');
+        }
 
         $user = auth()->user();
 
         $incident->client_id = $user->id;
         $incident->project_id = $user->selected_project_id;
-        $incident->level_id = Project::find($user->selected_project_id)->first_level_id;
+        $incident->level_id = Project::findOrFail($user->selected_project_id)->first_level_id;
 
         $incident->save();
 

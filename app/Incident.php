@@ -10,16 +10,13 @@ class Incident extends Model
     public static $rules = [
         'category_id' => 'sometimes|exists:categories,id',
         'severity' => 'required|in:M,N,A',
-        'title' => 'required|min:5',
-        'description' => 'required|min:15'
+        'title' => 'required|min:5'
     ];
 
     public static $messages = [
         'category_id.exists' => 'La categoría seleccionada no existe en nuestra base de datos.',
         'title.required' => 'Es necesario ingresar un título para la incidencia.',
-        'title.min' => 'El título debe presentar al menos 5 caracteres.',
-        'description.required' => 'Es necesario ingresar una descripción para la incidencia.',
-        'description.min' => 'La descripción debe presentar al menos 15 caracteres.'
+        'title.min' => 'El título debe presentar al menos 5 caracteres.'
     ];
 
     protected $appends = ['state'];

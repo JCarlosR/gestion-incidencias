@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('styles')
+    <style>
+        #my-description { display: none; }
+    </style>
+@endsection
+
 @section('content')
 <div class="panel panel-primary">
     <div class="panel-heading">Dashboard</div>
@@ -41,7 +47,14 @@
             </div>
             <div class="form-group">
                 <label for="description">Descripción</label>
-                <textarea name="description" class="form-control">{{ old('description') }}</textarea>
+                <select name="description" id="description" class="form-control">
+                    <option value="">Seleccione descripción</option>
+                    <option value="Ocurrió un problema con la aplicación web">Ocurrió un problema con la aplicación web</option>
+                    <option value="Ocurrió un problema con la aplicación móvil">Ocurrió un problema con la aplicación móvil</option>
+                    <option value="Ocurrió un problema con el hardware de la laptop">Ocurrió un problema con el hardware de la laptop</option>
+                </select>
+                <input type="checkbox" name="check-my-description" id="checkbox-description"> Escribir mi propia descripción
+                <textarea name="my-description" id="my-description" class="form-control">{{ old('description') }}</textarea>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary">Registrar incidencia</button>
@@ -49,4 +62,15 @@
         </form>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(function () {
+            $('#checkbox-description').on('change', function () {
+                $('#description').toggle();
+                $('#my-description').toggle();
+            });
+        });
+    </script>
 @endsection
