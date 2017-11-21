@@ -43,13 +43,15 @@ Route::post('/mensajes', 'MessageController@store');
 
 Route::group(['middleware' => 'admin', 'namespace' => 'Admin'], function () {
 
+    // PredefinedDescription
+    Route::get('/descripciones', 'DescriptionController@index');
+    Route::post('/descripciones', 'DescriptionController@store');
+
     // User
     Route::get('/usuarios', 'UserController@index');
     Route::post('/usuarios', 'UserController@store');
-    
     Route::get('/usuario/{id}', 'UserController@edit');
     Route::post('/usuario/{id}', 'UserController@update');
-
     Route::get('/usuario/{id}/eliminar', 'UserController@delete');
 
     // Project

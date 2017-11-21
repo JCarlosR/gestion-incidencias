@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PredefinedDescription;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Incident;
@@ -23,10 +24,11 @@ class IncidentController extends Controller
         return view('incidents.show')->with(compact('incident', 'messages'));
     }
 
-    public function create() 
+    public function create()
     {
         $categories = Category::where('project_id', auth()->user()->selected_project_id)->get();
-        return view('incidents.create')->with(compact('categories'));
+        $descriptions = PredefinedDescription::pluck('description');
+        return view('incidents.create')->with(compact('categories', 'descriptions'));
     }
 
     public function store(Request $request)

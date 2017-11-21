@@ -7,7 +7,7 @@
 					</form>
 					<div class="wrap">
 						<div class="user-img">
-							@if(auth()->user()->image)
+							@if (auth()->user()->image)
 								<img src="{{ asset('images/users/'.auth()->id().'.'.auth()->user()->image ) }}" alt="user-img" id="avatarImage" title="{{ auth()->user()->name }}" class="img-circle  img-responsive">
 							@else
 								<img src="{{ asset('images/users/0.jpg') }}" alt="user-img" id="avatarImage" title="{{ auth()->user()->name }}" class="img-circle img-responsive">
@@ -46,6 +46,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="/usuarios">Usuarios</a></li>
 						<li><a href="/proyectos">Proyectos</a></li>
+						<li><a href="/descripciones">Descripciones</a></li>
 						<li><a href="/config">Configuración</a></li>
 					</ul>
 				</li>
