@@ -73,9 +73,9 @@
 								<td>{{ $incident->state }}</td>
 								<td>{{ $incident->created_at }}</td>
 								<td>{{ $incident->title_short }}</td>
-								<td>
-									<a href="" class="btn btn-primary btn-sm">
-										Atender
+								<td class="text-center">
+									<a href="/ver/{{ $incident->id }}" class="btn btn-info btn-xs" title="Ver detalles">
+										<i class="glyphicon glyphicon-search"></i>
 									</a>
 								</td>
 							</tr>
