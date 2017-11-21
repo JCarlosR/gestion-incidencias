@@ -37,8 +37,9 @@ Route::get('/incidencia/{id}/abrir', 'IncidentController@open');
 Route::get('/incidencia/{id}/derivar', 'IncidentController@nextLevel');
 
 
-// Message
+// Message & attachments
 Route::post('/mensajes', 'MessageController@store');
+Route::post('/adjuntos', 'AttachmentController@store');
 
 
 Route::group(['middleware' => 'admin', 'namespace' => 'Admin'], function () {

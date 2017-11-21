@@ -58,7 +58,21 @@
                 </tr>
                 <tr>
                     <th>Adjuntos</th>
-                    <td id="incident_attachment">No se han adjuntado archivos</td>
+                    <td id="incident_attachment">
+                        @if (count($attachments) == 0)
+                            Aún no se han adjuntado archivos.
+                        @else
+                            <ul>
+                                @foreach ($attachments as $attachment)
+                                    <li>
+                                        <a href="{{ asset('/attachments/'.$attachment->attachment) }}" target="_blank">
+                                            {{ $attachment->attachment }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -94,4 +108,28 @@
 </div>
 
     @include('layouts.chat')
+@endsection
+
+@section('scripts')
+    <script>
+        var $sendAttach, $sendMessage;
+        var $formAttach, $formMessage;
+        $(function () {
+            $sendAttach = $('#send-attach-link');
+            $sendMessage = $('#send-message-link');
+
+            $formAttach = $('#form-attach');
+            $formMessage = $('#form-message');
+
+            $sendAttach.on('click', toggleForms);
+            $sendMessage.on('click', toggleForms);
+        });
+
+        function toggleForms(event) {
+            event.preventDefault();
+
+            $formAttach.toggle();
+            $formMessage.toggle();
+        }
+    </script>
 @endsection

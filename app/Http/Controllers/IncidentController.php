@@ -21,7 +21,8 @@ class IncidentController extends Controller
     {
         $incident = Incident::findOrFail($id);
         $messages = $incident->messages;
-        return view('incidents.show')->with(compact('incident', 'messages'));
+        $attachments = $incident->attachments;
+        return view('incidents.show')->with(compact('incident', 'messages', 'attachments'));
     }
 
     public function create()

@@ -36,16 +36,32 @@
     </div>
     @if ($incident->state == 'Asignado')
     <div class="panel-footer">
-        <form action="/mensajes" method="POST">
+        <form action="/mensajes" method="POST" id="form-message">
             {{ csrf_field() }}
             <input type="hidden" name="incident_id" value="{{ $incident->id }}">
             <div class="input-group">
-                <input type="text" class="form-control" name="message">
+                <input type="text" class="form-control" name="message" required>
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">Enviar</button>
                 </span>
-            </div>    
-        </form>        
+            </div>
+            <p class="help-block">
+                <a href="#" id="send-attach-link">Enviar un archivo adjunto.</a>
+            </p>
+        </form>
+        <form action="/adjuntos" method="POST" id="form-attach" style="display: none;" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <input type="hidden" name="incident_id" value="{{ $incident->id }}">
+            <div class="input-group">
+                <input type="file" class="form-control" name="file" required>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Adjuntar</button>
+                </span>
+            </div>
+            <p class="help-block">
+                <a href="#" id="send-message-link">Enviar un mensaje.</a>
+            </p>
+        </form>
     </div>
     @endif
 </div>

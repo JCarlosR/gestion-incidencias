@@ -53,6 +53,11 @@ class Incident extends Model
         return $this->hasMany('App\Message');   
     }
 
+    public function attachments()
+    {
+        return $this->hasMany('App\Attachment');
+    }
+
 
     // accessors
 
