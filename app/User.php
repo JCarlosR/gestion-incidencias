@@ -37,9 +37,12 @@ class User extends Authenticatable
     // accessors
     public function getAvatarPathAttribute()
     {
+        if ($this->image)
+            return '/images/users/'.$this->id.'.'.$this->image;
+
+        // default images
         if ($this->is_client)
             return '/images/client.png';
-
         return '/images/support.png';
     }
 
