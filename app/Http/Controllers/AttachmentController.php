@@ -15,11 +15,11 @@ class AttachmentController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'file' => 'required|file|max:5'
+            'file' => 'required|file|max:10240'
         ];
         $messages = [
             'file.required' => 'Olvidó adjuntar el archivo.',
-            'file.max' => 'El archivo adjunto no debe exceder los 5MB.'
+            'file.max' => 'El archivo adjunto no debe exceder los 10MB.'
         ];
 
         $this->validate($request, $rules, $messages);

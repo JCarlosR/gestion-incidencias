@@ -110,11 +110,10 @@ class IncidentController extends Controller
         $incident = Incident::findOrFail($id);
 
         // Is the user authenticated the author of the incident?
-        if ($incident->client_id != auth()->user()->id)
-            return back();
-           
-        $incident->active = 0; // false
-        $incident->save();
+        if ($incident->client_id == auth()->id() || $incident->support_id == auth()->id()) {
+            $incident->active = 0; // false
+            $incident->save();
+        }
 
         return back();
     }
@@ -124,11 +123,10 @@ class IncidentController extends Controller
         $incident = Incident::findOrFail($id);
 
         // Is the user authenticated the author of the incident?
-        if ($incident->client_id != auth()->user()->id)
-            return back();
-           
-        $incident->active = 1; // true
-        $incident->save();
+        if ($incident->client_id == auth()->id() || $incident->support_id == auth()->id()) {
+            $incident->active = 1; // true
+            $incident->save();
+        }
 
         return back();
     }
