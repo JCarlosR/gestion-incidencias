@@ -18,6 +18,9 @@ Route::get('/home', 'HomeController@index');
 Route::get('/seleccionar/proyecto/{id}', 'HomeController@selectProject');
 
 Route::group(['middleware' => 'auth', 'namespace' => 'User'], function (){
+    Route::get('/profile', 'ProfileController@edit');
+    Route::post('/profile/data', 'ProfileController@postData');
+    Route::post('/profile/password', 'ProfileController@postPassword');
     Route::post('/profile/image', 'ProfileController@postImage');
 });
 

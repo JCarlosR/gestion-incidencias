@@ -73,10 +73,12 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="{{ url('/profile') }}">
+                                            <i class="glyphicon glyphicon-user"></i> Modificar datos
+                                        </a>
                                         <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Cerrar sesión
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <i class="glyphicon glyphicon-log-out"></i> Cerrar sesión
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
