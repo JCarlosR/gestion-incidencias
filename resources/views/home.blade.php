@@ -20,7 +20,7 @@
 							<th>Severidad</th>
 							<th>Estado</th>
 							<th>Fecha creación</th>
-							<th>Título</th>
+							<th>Nombre</th>
 						</tr>
 					</thead>
 					<tbody id="dashboard_my_incidents">
@@ -56,7 +56,7 @@
 							<th>Severidad</th>
 							<th>Estado</th>
 							<th>Fecha creación</th>
-							<th>Título</th>
+							<th>Nombre</th>
 							<th>Opción</th>
 						</tr>
 					</thead>
@@ -99,7 +99,7 @@
 							<th>Severidad</th>
 							<th>Estado</th>
 							<th>Fecha creación</th>
-							<th>Título</th>
+							<th>Nombre</th>
 							<th>Responsable</th>
 						</tr>
 					</thead>

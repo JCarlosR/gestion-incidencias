@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="panel panel-primary">
-    <div class="panel-heading">Dashboard</div>
+    <div class="panel-heading">Datos de la incidencia # {{ $incident->id }} - Nro de control {{ $incident->control_number }}</div>
 
     <div class="panel-body">
         @if (session('notification'))
@@ -49,7 +49,7 @@
         <table class="table table-bordered">
             <tbody>
                 <tr>
-                    <th>Título</th>
+                    <th>Nombre</th>
                     <td id="incident_summary">{{ $incident->title }}</td>
                 </tr>
                 <tr>

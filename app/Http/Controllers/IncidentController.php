@@ -39,6 +39,7 @@ class IncidentController extends Controller
         $incident = new Incident();
         $incident->category_id = $request->input('category_id') ?: null;
         $incident->severity = $request->input('severity');
+        $incident->control_number = $request->input('control_number');
         $incident->title = $request->input('title');
         $description = $request->input('description');
         if ($description == '-1') {
@@ -73,12 +74,17 @@ class IncidentController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, Incident::$rules, Incident::$messages);
+        // allow edit and use the existing ctrl number
+        $rulesForEdit = Incident::$rules;
+        $rulesForEdit['control_number'] = $rulesForEdit['control_number'] . ',id,' . $id;
+
+        $this->validate($request, $rulesForEdit, Incident::$messages);
 
         $incident = Incident::findOrFail($id);
 
         $incident->category_id = $request->input('category_id') ?: null;
         $incident->severity = $request->input('severity');
+        $incident->control_number = $request->input('control_number');
         $incident->title = $request->input('title');
 
         $description = $request->input('description');

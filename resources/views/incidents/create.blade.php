@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="panel panel-primary">
-    <div class="panel-heading">Dashboard</div>
+    <div class="panel-heading">Reportar nueva incidencia</div>
 
     <div class="panel-body">
         @if (count($errors) > 0)
@@ -42,7 +42,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="title">Título</label>
+                <label for="control_number">Número de control</label>
+                <input type="text" name="control_number" class="form-control" value="{{ old('control_number') }}">
+            </div>
+            <div class="form-group">
+                <label for="title">Nombre</label>
                 <input type="text" name="title" class="form-control" value="{{ old('title') }}">
             </div>
             <div class="form-group">
