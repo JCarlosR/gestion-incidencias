@@ -40,10 +40,11 @@ class IncidentController extends Controller
         $incident->category_id = $request->input('category_id') ?: null;
         $incident->severity = $request->input('severity');
         $incident->title = $request->input('title');
-        if ($request->input('check-my-description') == 'on') {
+        $description = $request->input('description');
+        if ($description == '-1') {
             $incident->description = $request->input('my-description');
         } else {
-            $incident->description = $request->input('description');
+            $incident->description = $description;
         }
 
         $user = auth()->user();
@@ -61,7 +62,13 @@ class IncidentController extends Controller
     {
         $incident = Incident::findOrFail($id);
         $categories = $incident->project->categories;
-        return view('incidents.edit')->with(compact('incident', 'categories'));
+
+        $descriptions = PredefinedDescription::pluck('description')->toArray();
+        $customDescription = !in_array($incident->description, $descriptions);
+
+        return view('incidents.edit')->with(compact(
+            'incident', 'categories', 'descriptions', 'customDescription'
+        ));
     }
 
     public function update(Request $request, $id)
@@ -73,7 +80,13 @@ class IncidentController extends Controller
         $incident->category_id = $request->input('category_id') ?: null;
         $incident->severity = $request->input('severity');
         $incident->title = $request->input('title');
-        $incident->description = $request->input('description');
+
+        $description = $request->input('description');
+        if ($description == '-1') {
+            $incident->description = $request->input('my-description');
+        } else {
+            $incident->description = $description;
+        }
 
         $incident->save();
         return redirect("/ver/$id");        

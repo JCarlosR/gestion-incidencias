@@ -41,7 +41,17 @@
             </div>
             <div class="form-group">
                 <label for="description">Descripción</label>
-                <textarea name="description" class="form-control">{{ old('description', $incident->description) }}</textarea>
+                <select name="description" id="description" @if($customDescription) style="display: none;" @endif class="form-control">
+                    <option value="">Seleccione descripción</option>
+                    @foreach ($descriptions as $description)
+                        <option value="{{ $description }}" @if(old('description', $incident->description)==$description) selected @endif>
+                            {{ $description }}
+                        </option>
+                    @endforeach
+                    <option value="-1" @if($customDescription) selected @endif>(*) Ingresar mi propia descripción</option>
+                </select>
+
+                <textarea name="my-description" id="my-description" class="form-control" @if($customDescription==false) style="display: none;" @endif>{{ old('description', $incident->description) }}</textarea>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary">Guardar cambios</button>
@@ -50,4 +60,18 @@
 
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(function () {
+            $('#description').on('change', function () {
+                var value = $(this).val();
+                if (value === '-1') {
+                    $('#description').hide();
+                    $('#my-description').fadeIn();
+                }
+            });
+        });
+    </script>
 @endsection

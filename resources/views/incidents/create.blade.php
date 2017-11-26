@@ -52,8 +52,8 @@
                     @foreach ($descriptions as $description)
                         <option value="{{ $description }}">{{ $description }}</option>
                     @endforeach
+                    <option value="-1">(*) Ingresar mi propia descripción</option>
                 </select>
-                <input type="checkbox" name="check-my-description" id="checkbox-description"> Escribir mi propia descripción
                 <textarea name="my-description" id="my-description" class="form-control">{{ old('description') }}</textarea>
             </div>
             <div class="form-group">
@@ -67,9 +67,12 @@
 @section('scripts')
     <script>
         $(function () {
-            $('#checkbox-description').on('change', function () {
-                $('#description').toggle();
-                $('#my-description').toggle();
+            $('#description').on('change', function () {
+                var value = $(this).val();
+                if (value === '-1') {
+                    $('#description').hide();
+                    $('#my-description').fadeIn();
+                }
             });
         });
     </script>
