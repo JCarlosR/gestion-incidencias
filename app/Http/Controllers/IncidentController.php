@@ -102,7 +102,7 @@ class IncidentController extends Controller
     {
         $user = auth()->user();
 
-        if (! $user->is_support)
+        if ($user->is_client)
             return back();
 
         $incident = Incident::findOrFail($id);

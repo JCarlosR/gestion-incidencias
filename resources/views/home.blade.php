@@ -6,7 +6,7 @@
 
     <div class="panel-body">
         
-        @if (auth()->user()->is_support)
+        @if (auth()->user()->is_support || auth()->user()->is_admin)
         <div class="panel panel-success">
 			<div class="panel-heading">
 				<h3 class="panel-title">Incidencias asignadas a mí</h3>

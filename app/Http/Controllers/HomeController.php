@@ -22,7 +22,7 @@ class HomeController extends Controller
 
         if ($selected_project_id) {
 
-            if ($user->is_support) {
+            if ($user->is_support || $user->is_admin) {
                 $my_incidents = Incident::where('project_id', $selected_project_id)->where('support_id', $user->id)->get();
 
                 $projectUser = ProjectUser::where('project_id', $selected_project_id)->where('user_id', $user->id)->first();
