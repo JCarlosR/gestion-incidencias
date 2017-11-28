@@ -5,18 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="//bootswatch.com/3/flatly/bootstrap.css">
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/fondo_edit.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/flatly_bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/fondo_edit.css') }}">
     @yield('styles')
 
-    <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
