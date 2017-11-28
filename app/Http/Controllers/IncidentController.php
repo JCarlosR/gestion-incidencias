@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Attachment;
 use App\PredefinedDescription;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Incident;
@@ -148,6 +149,9 @@ class IncidentController extends Controller
         // Is the user authenticated the author of the incident?
         if ($incident->client_id == auth()->id() || $incident->support_id == auth()->id()) {
             $incident->active = 0; // false
+
+            $incident->closed_at = Carbon::now();
+            $incident->closed_by = auth()->id();
             $incident->save();
         }
 
@@ -161,6 +165,9 @@ class IncidentController extends Controller
         // Is the user authenticated the author of the incident?
         if ($incident->client_id == auth()->id() || $incident->support_id == auth()->id()) {
             $incident->active = 1; // true
+
+            $incident->opened_at = Carbon::now();
+            $incident->opened_by = auth()->id();
             $incident->save();
         }
 

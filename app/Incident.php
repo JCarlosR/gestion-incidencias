@@ -61,6 +61,15 @@ class Incident extends Model
         return $this->hasMany('App\Attachment');
     }
 
+    public function openedBy()
+    {
+        return $this->belongsTo(User::class, 'opened_by');
+    }
+
+    public function closedBy()
+    {
+        return $this->belongsTo(User::class, 'closed_by');
+    }
 
     // accessors
 

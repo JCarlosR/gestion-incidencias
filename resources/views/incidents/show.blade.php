@@ -91,10 +91,16 @@
                 <a href="/incidencia/{{ $incident->id }}/editar" class="btn btn-success btn-sm" id="incident_btn_edit">
                     Editar incidencia
                 </a>
+                @if ($incident->opened_by)
+                    <p>Esta incidencia fue abierta el {{ $incident->opened_at }} por <em>{{ $incident->openedBy->name }}</em>.</p>
+                @endif
             @else
                 <a href="/incidencia/{{ $incident->id }}/abrir" class="btn btn-info btn-sm" id="incident_btn_open">
                     Volver a abrir incidencia
                 </a>
+                    @if ($incident->closed_by)
+                        <p>Esta incidencia fue cerrada el {{ $incident->closed_at }} por <em>{{ $incident->closedBy->name }}</em>.</p>
+                    @endif
             @endif
         @endif
 
