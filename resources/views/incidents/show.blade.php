@@ -67,7 +67,7 @@
                                     <li>
                                         <a href="{{ asset('/attachments/'.$attachment->attachment) }}" target="_blank">
                                             {{ $attachment->attachment }}
-                                        </a>
+                                        </a> <small>(Subido por {{ $attachment->user->name }} el {{ $attachment->created_at }})</small>
                                     </li>
                                 @endforeach
                             </ul>

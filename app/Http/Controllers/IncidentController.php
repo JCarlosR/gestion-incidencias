@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Attachment;
 use App\PredefinedDescription;
 use Illuminate\Http\Request;
 use App\Category;
@@ -54,9 +55,25 @@ class IncidentController extends Controller
         $incident->project_id = $user->selected_project_id;
         $incident->level_id = Project::findOrFail($user->selected_project_id)->first_level_id;
 
-        $incident->save();
+        $saved = $incident->save();
 
-        return back();
+        if ($saved && $request->hasFile('attachment')) {
+            $file = $request->file('attachment');
+            $path = public_path('/attachments');
+            $fileName = uniqid() . '-' . $file->getClientOriginalName();
+            $moved = $file->move($path, $fileName);
+
+            if ($moved) {
+                $attachment = new Attachment();
+                $attachment->incident_id = $incident->id;
+                $attachment->attachment = $fileName;
+                $attachment->user_id = auth()->user()->id;
+                $attachment->save();
+            }
+        }
+
+        $notification = 'La incidencia se ha registrado exitosamente.';
+        return back()->with(compact('notification'));
     }
 
     public function edit($id)

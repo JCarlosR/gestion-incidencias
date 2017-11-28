@@ -21,7 +21,13 @@
             </div>
         @endif
 
-        <form action="" method="POST">
+        @if (session('notification'))
+            <div class="alert alert-success">
+                {{ session('notification') }}
+            </div>
+        @endif
+
+        <form action="" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             
             <div class="form-group">
@@ -61,6 +67,13 @@
                 <textarea name="my-description" id="my-description" class="form-control">{{ old('description') }}</textarea>
             </div>
             <div class="form-group">
+                <input type="checkbox" id="add-attachment"> Deseo añadir un archivo adjunto
+            </div>
+            <div class="form-group" style="display: none;" id="attachment-group">
+                <label for="attachment">Archivo adjunto</label>
+                <input type="file" name="attachment">
+            </div>
+            <div class="form-group">
                 <button class="btn btn-primary">Registrar incidencia</button>
             </div>
         </form>
@@ -77,6 +90,10 @@
                     $('#description').hide();
                     $('#my-description').fadeIn();
                 }
+            });
+
+            $('#add-attachment').on('click', function () {
+                $('#attachment-group').fadeToggle();
             });
         });
     </script>

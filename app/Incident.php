@@ -11,7 +11,7 @@ class Incident extends Model
         'category_id' => 'sometimes|exists:categories,id',
         'severity' => 'required|in:M,N,A',
         'control_number' => 'required|unique:incidents',
-        'title' => 'required|min:5'
+        'title' => 'required|min:4'
     ];
 
     public static $messages = [
@@ -19,7 +19,7 @@ class Incident extends Model
         'control_number.required' => 'Es necesario ingresar un número de control.',
         'control_number.unique' => 'El número de control ingresado ya se encuentra en uso.',
         'title.required' => 'Es necesario ingresar un nombre para la incidencia.',
-        'title.min' => 'El título debe presentar al menos 5 caracteres.'
+        'title.min' => 'El nombre debe presentar al menos 4 caracteres.'
     ];
 
     protected $appends = ['state'];
