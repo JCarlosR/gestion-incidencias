@@ -47,7 +47,7 @@
 						<li><a href="/usuarios">Usuarios</a></li>
 						<li><a href="/proyectos">Proyectos</a></li>
 						<li><a href="/descripciones">Descripciones</a></li>
-						<li><a href="/config">Configuración</a></li>
+						<li><a href="/reportes">Reportes</a></li>
 					</ul>
 				</li>
 				@endif

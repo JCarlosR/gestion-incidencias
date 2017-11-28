@@ -81,5 +81,8 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin'], function () {
     Route::post('/proyecto-usuario', 'ProjectUserController@store');
     Route::get('/proyecto-usuario/{id}/eliminar', 'ProjectUserController@delete');
 
-	// Route::get('/config', 'ConfigController@index');
+    // Reports
+	Route::get('/reportes', 'ReportController@index');
+    Route::get('/reportes/by-project', 'ReportController@byProjects');
+    Route::get('/reportes/proyectos/{project}/by-descriptions', 'ReportController@byPredefinedDescriptions');
 });
