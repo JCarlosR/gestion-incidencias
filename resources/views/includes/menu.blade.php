@@ -59,6 +59,7 @@
 		</ul>
 	</div>
 </div>
+@if (auth()->check())
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<i class="glyphicon glyphicon-search"></i>
@@ -67,8 +68,9 @@
 	<div class="panel-body">
 		<form action="{{ url('search') }}">
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Número de control" name="control_number" value="{{ $control_number ?: '' }}" required>
+				<input type="text" class="form-control" placeholder="Número de control" name="control_number" required>
 			</div>
 		</form>
 	</div>
 </div>
+@endif
