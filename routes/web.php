@@ -44,6 +44,9 @@ Route::get('/incidencia/{id}/derivar', 'IncidentController@nextLevel');
 Route::post('/mensajes', 'MessageController@store');
 Route::post('/adjuntos', 'AttachmentController@store');
 
+// Search incidents by control number
+Route::get('/search', 'SearchController@index');
+
 
 Route::group(['middleware' => 'admin', 'namespace' => 'Admin'], function () {
 

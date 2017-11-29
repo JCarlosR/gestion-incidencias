@@ -1,8 +1,22 @@
 @font-face {
   font-family: 'Lato';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Lato Bold'), local('Lato-Bold'), url(./Lato/Lato-Regular.ttf) format('truetype');
+  src: url("./Lato/Lato-Regular.ttf");
+}
+@font-face {
+  font-family: 'Lato';
+  src: url("./Lato/Lato-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'Lato';
+  src: url("./Lato/Lato-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Lato';
+  src: url("./Lato/Lato-BoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
 }
 /*!
  * bootswatch v3.3.7
